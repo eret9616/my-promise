@@ -154,7 +154,7 @@ myPromise.prototype.then = function (success, fail) {
                         } catch (e) {
                             reject(e)
                         }
-                    }, 3000)
+                    })
                     //
 
 
