@@ -187,12 +187,13 @@ function myResolve(p, r, resolve, reject) {
     // 1 如果onFullFilled返回的是该promise本身，那么抛出类型错误
     if (r === p) { // 如果没有settimeout 不是异步的，那么这个p是不存在的，在规范这里，success和fail的执行也是异步的
         throw new TypeError('chaining cycled')
-    } else if (r.constructor === myPromise) {
+    } else if (r.__proto__.constructor === myPromise) {
         // 2 如果是promise，执行它的then方法
-        r.then.call(r, (sucesss) => {
-            resolve(success)
-        }, (fail) => {
-            reject(fail)
+        r.then.call(r, 
+           (sucesssValue) => {
+            resolve(sucesssValue)
+        }, (failValue) => {
+            reject(failValue)
         })
     } else {
         // 3 如果是普通的，resolve出来
