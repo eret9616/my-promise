@@ -2,7 +2,7 @@
 
 // 挂在类上的静态方法
 Promise.resolve = function (value) {
-    return new Promise((resolve, rejec) => {
+    return new Promise((resolve, reject) => {
         resolve(value)
     })
 }
