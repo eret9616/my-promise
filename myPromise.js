@@ -19,7 +19,7 @@
          
         出现这种情况的示例：
             let p = new Promise((resolve, reject) => {
-                  resolve(p)
+                  resolve(p) // 这里错误
             }).then((r) => {
                  //
             }).then((r) => {
