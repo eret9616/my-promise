@@ -19,13 +19,9 @@
          
         出现这种情况的示例：
             let p = new Promise((resolve, reject) => {
-                  resolve(11111111)
+                  resolve(p)
             }).then((r) => {
-                  let _p = new Promise((resolve, reject) => {
-                      setTimeout(() => {         《---------- 把_p自己给resolve出去了 会报错 chaining cycled
-                          resolve(_p)
-                      }, 2000)
-                  })
+                 //
             }).then((r) => {
                   console.log(r);
             })
