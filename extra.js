@@ -45,7 +45,11 @@ Promise.all = function (items) {
 Promise.race = function (items) {
     return new Promise(function (resolve, reject) {
         for (let i = 0; i < items.length; i++) {
-            items[i].then(resolve, reject)
+            items[i].then((value)=>{
+                resolve(value)
+            }, (err)=>{
+                reject(err)
+            })
         }
     })
 }
