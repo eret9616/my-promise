@@ -107,7 +107,7 @@ myPromise.prototype.then = function (success, fail) {
 
             setTimeout(() => {
 
-                //
+                // 为什么要用settimeout https://promisesaplus.com/#notes 2.2.4 这个属于规定
                 try {
                     const r = success(this.value)
                     // 下面对返回值处理
@@ -187,9 +187,9 @@ function myResolve(p, r, resolve, reject) {
         // 2 如果是promise，执行它的then方法
         r.then.call(r, 
            (sucesssValue) => {
-            resolve(sucesssValue)
+            resolve(sucesssValue) // 把外面的resolve传进去，最终resolve的值给了最外面的promise
         }, (failValue) => {
-            reject(failValue)
+            reject(failValue) // 把外面的reject传进去
         })
     } else {
         // 3 如果是普通的，resolve出来
