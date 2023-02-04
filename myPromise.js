@@ -187,7 +187,7 @@ function myResolve(p, r, resolve, reject) {
         // 2 如果是promise，执行它的then方法
         r.then.call(r, 
            (sucesssValue) => {
-            resolve(sucesssValue) // 把外面的resolve传进去，最终resolve的值给了最外面的promise
+            myResolve(sucesssValue) // 把外面的resolve传进去，最终resolve的值给了最外面的promise
         }, (failValue) => {
             reject(failValue) // 把外面的reject传进去
         })
